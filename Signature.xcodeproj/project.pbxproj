@@ -39,7 +39,6 @@
 		237904D520FF098500F4E26D = {
 			isa = PBXGroup;
 			children = (
-				237904F121004CB300F4E26D /* FileDropTextField.swift */,
 				237904E020FF098500F4E26D /* Signature */,
 				237904DF20FF098500F4E26D /* Products */,
 			);
@@ -56,6 +55,7 @@
 		237904E020FF098500F4E26D /* Signature */ = {
 			isa = PBXGroup;
 			children = (
+				237904F121004CB300F4E26D /* FileDropTextField.swift */,
 				237904E120FF098500F4E26D /* AppDelegate.swift */,
 				237904E320FF098700F4E26D /* Assets.xcassets */,
 				237904E520FF098700F4E26D /* MainMenu.xib */,
