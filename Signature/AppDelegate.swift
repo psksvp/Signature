@@ -15,6 +15,7 @@ class AppDelegate: NSObject, NSApplicationDelegate
   @IBOutlet weak var outputTextField: NSTextField!
   @IBOutlet weak var fileDropTextField: FileDropTextField!
   @IBOutlet weak var algorithmsSelector: NSComboBox!
+  @IBOutlet weak var matchTextField: NSTextField!
   
   let digests = ["gost-mac","md4",
                   "md5","md_gost94","ripemd160","sha",
@@ -46,10 +47,12 @@ class AppDelegate: NSObject, NSApplicationDelegate
   {
     NSLog("algorithm selected :")
     NSLog(digests[algorithmsSelector.indexOfSelectedItem])
+    generateButtonPushed(sender)
   }
   
-  @IBAction func generateButtonPushed(_ sender: NSButton)
+  @IBAction func generateButtonPushed(_ sender: Any)
   {
+    NSLog("butten pushed")
     if self.fileDropTextField.stringValue == "Drop a file here"
     {
       self.outputTextField.stringValue = "No file dropped.."
@@ -65,8 +68,23 @@ class AppDelegate: NSObject, NSApplicationDelegate
         str in
         if let index = str.index(of:"=")
         {
-          let r = d + str[index...]
+          let r = (d + str[index...]).trimmingCharacters(in: CharacterSet.whitespacesAndNewlines)
+          let s = self.digests[self.algorithmsSelector.indexOfSelectedItem] + "= " +
+                  self.matchTextField.stringValue.trimmingCharacters(in: CharacterSet.whitespacesAndNewlines)
+          NSLog(s)
+          NSLog(r)
           self.outputTextField.stringValue = self.outputTextField.stringValue + r
+          if r == s
+          {
+            self.outputTextField.stringValue = self.outputTextField.stringValue + "\n" + "Match"
+          }
+          else
+          {
+            if !self.matchTextField.stringValue.isEmpty
+            {
+              self.outputTextField.stringValue = self.outputTextField.stringValue + "\n" + "NOT Match"
+            }
+          }
         }
       }
     }
