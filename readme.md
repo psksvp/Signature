@@ -1,6 +1,8 @@
 # Signature
 
-GUI to openssl to generate digest of a file.
+![screen](screen.png)
+
+A little GUI application to generate digest of a file.
 
 * gost-mac
 * md4
@@ -17,9 +19,5 @@ GUI to openssl to generate digest of a file.
 * streebog512
 * whirlpool
 
-
-# Acknowledgement
-
-Use code form https://github.com/aciidb0mb3r/Spawn
 
 

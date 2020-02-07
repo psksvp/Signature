@@ -90,44 +90,10 @@ class AppDelegate: NSObject, NSApplicationDelegate
         
         if false == stderr.trim().isEmpty
         {
-          self.outputTextField.stringValue = "Errors:\n\(stderr)"
+          self.outputTextField.stringValue.append("\nErrors:\n\(stderr)")
         }
       }
     }
-  
-    
-//    do
-//    {
-//      try Spawn(args: ["/usr/bin/openssl", d, fileDropTextField.stringValue])
-//      {
-//        str in
-//        if let index = str.index(of:"=")
-//        {
-//          let r = (d + str[index...]).trimmingCharacters(in: CharacterSet.whitespacesAndNewlines)
-//          let s = self.digests[self.algorithmsSelector.indexOfSelectedItem] + "= " +
-//                  self.matchTextField.stringValue.trimmingCharacters(in: CharacterSet.whitespacesAndNewlines)
-//          NSLog(s)
-//          NSLog(r)
-//          self.outputTextField.stringValue = self.outputTextField.stringValue + r
-//          if r == s
-//          {
-//            self.outputTextField.stringValue = self.outputTextField.stringValue + "\n" + "Match"
-//          }
-//          else
-//          {
-//            if !self.matchTextField.stringValue.isEmpty
-//            {
-//              self.outputTextField.stringValue = self.outputTextField.stringValue + "\n" + "NOT Match"
-//            }
-//          }
-//        }
-//      }
-//    }
-//    catch
-//    {
-//      self.outputTextField.stringValue = "Error spawning openssl process.."
-//    }
-    
   }
 }
 
