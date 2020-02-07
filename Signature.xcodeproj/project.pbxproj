@@ -3,14 +3,14 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 50;
+	objectVersion = 52;
 	objects = {
 
 /* Begin PBXBuildFile section */
+		23229CC223EE069F008FA9C2 /* CommonSwift in Frameworks */ = {isa = PBXBuildFile; productRef = 23229CC123EE069F008FA9C2 /* CommonSwift */; };
 		237904E220FF098500F4E26D /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 237904E120FF098500F4E26D /* AppDelegate.swift */; };
 		237904E420FF098700F4E26D /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 237904E320FF098700F4E26D /* Assets.xcassets */; };
 		237904E720FF098700F4E26D /* MainMenu.xib in Resources */ = {isa = PBXBuildFile; fileRef = 237904E520FF098700F4E26D /* MainMenu.xib */; };
-		237904F020FF158A00F4E26D /* Spawn.swift in Sources */ = {isa = PBXBuildFile; fileRef = 237904EF20FF158A00F4E26D /* Spawn.swift */; };
 		237904F221004CB300F4E26D /* FileDropTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 237904F121004CB300F4E26D /* FileDropTextField.swift */; };
 /* End PBXBuildFile section */
 
@@ -21,7 +21,6 @@
 		237904E620FF098700F4E26D /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/MainMenu.xib; sourceTree = "<group>"; };
 		237904E820FF098700F4E26D /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		237904E920FF098700F4E26D /* Signature.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = Signature.entitlements; sourceTree = "<group>"; };
-		237904EF20FF158A00F4E26D /* Spawn.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Spawn.swift; sourceTree = "<group>"; };
 		237904F121004CB300F4E26D /* FileDropTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FileDropTextField.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -30,6 +29,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				23229CC223EE069F008FA9C2 /* CommonSwift in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -61,7 +61,6 @@
 				237904E520FF098700F4E26D /* MainMenu.xib */,
 				237904E820FF098700F4E26D /* Info.plist */,
 				237904E920FF098700F4E26D /* Signature.entitlements */,
-				237904EF20FF158A00F4E26D /* Spawn.swift */,
 			);
 			path = Signature;
 			sourceTree = "<group>";
@@ -82,6 +81,9 @@
 			dependencies = (
 			);
 			name = Signature;
+			packageProductDependencies = (
+				23229CC123EE069F008FA9C2 /* CommonSwift */,
+			);
 			productName = Signature;
 			productReference = 237904DE20FF098500F4E26D /* Signature.app */;
 			productType = "com.apple.product-type.application";
@@ -110,6 +112,9 @@
 				Base,
 			);
 			mainGroup = 237904D520FF098500F4E26D;
+			packageReferences = (
+				23229CC023EE069F008FA9C2 /* XCRemoteSwiftPackageReference "CommonSwift" */,
+			);
 			productRefGroup = 237904DF20FF098500F4E26D /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
@@ -138,7 +143,6 @@
 			files = (
 				237904E220FF098500F4E26D /* AppDelegate.swift in Sources */,
 				237904F221004CB300F4E26D /* FileDropTextField.swift in Sources */,
-				237904F020FF158A00F4E26D /* Spawn.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -329,6 +333,25 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		23229CC023EE069F008FA9C2 /* XCRemoteSwiftPackageReference "CommonSwift" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/psksvp/CommonSwift";
+			requirement = {
+				branch = master;
+				kind = branch;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		23229CC123EE069F008FA9C2 /* CommonSwift */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 23229CC023EE069F008FA9C2 /* XCRemoteSwiftPackageReference "CommonSwift" */;
+			productName = CommonSwift;
+		};
+/* End XCSwiftPackageProductDependency section */
 	};
 	rootObject = 237904D620FF098500F4E26D /* Project object */;
 }

@@ -1,0 +1,16 @@
+{
+  "object": {
+    "pins": [
+      {
+        "package": "CommonSwift",
+        "repositoryURL": "https://github.com/psksvp/CommonSwift",
+        "state": {
+          "branch": "master",
+          "revision": "70d08899e7d548b923e0942ad797685e8e4f9aa7",
+          "version": null
+        }
+      }
+    ]
+  },
+  "version": 1
+}

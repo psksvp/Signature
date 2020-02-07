@@ -7,6 +7,7 @@
 //
 
 import Cocoa
+import CommonSwift
 
 @NSApplicationMain
 class AppDelegate: NSObject, NSApplicationDelegate
@@ -52,27 +53,27 @@ class AppDelegate: NSObject, NSApplicationDelegate
   
   @IBAction func generateButtonPushed(_ sender: Any)
   {
-    NSLog("butten pushed")
+    NSLog("button pushed")
     if self.fileDropTextField.stringValue == "Drop a file here"
     {
       self.outputTextField.stringValue = "No file dropped.."
       return
     }
   
-    outputTextField.stringValue = ""
     let d = digests[algorithmsSelector.indexOfSelectedItem]
-    do
+    let args = ["/usr/bin/openssl", d, fileDropTextField.stringValue]
+    outputTextField.stringValue = "Running openssl..\n\(args.debugDescription)"
+    OS.spawnAsync(args, nil)
     {
-      try Spawn(args: ["/usr/bin/openssl", d, fileDropTextField.stringValue])
+      stdout, stderr in
+      DispatchQueue.main.async
       {
-        str in
-        if let index = str.index(of:"=")
+        self.outputTextField.stringValue = ""
+        if let index = stdout.index(of:"=")
         {
-          let r = (d + str[index...]).trimmingCharacters(in: CharacterSet.whitespacesAndNewlines)
+          let r = (d + stdout[index...]).trim()
           let s = self.digests[self.algorithmsSelector.indexOfSelectedItem] + "= " +
-                  self.matchTextField.stringValue.trimmingCharacters(in: CharacterSet.whitespacesAndNewlines)
-          NSLog(s)
-          NSLog(r)
+          self.matchTextField.stringValue.trim()
           self.outputTextField.stringValue = self.outputTextField.stringValue + r
           if r == s
           {
@@ -86,12 +87,46 @@ class AppDelegate: NSObject, NSApplicationDelegate
             }
           }
         }
+        
+        if false == stderr.trim().isEmpty
+        {
+          self.outputTextField.stringValue = "Errors:\n\(stderr)"
+        }
       }
     }
-    catch
-    {
-      self.outputTextField.stringValue = "Error spawning openssl process.."
-    }
+  
+    
+//    do
+//    {
+//      try Spawn(args: ["/usr/bin/openssl", d, fileDropTextField.stringValue])
+//      {
+//        str in
+//        if let index = str.index(of:"=")
+//        {
+//          let r = (d + str[index...]).trimmingCharacters(in: CharacterSet.whitespacesAndNewlines)
+//          let s = self.digests[self.algorithmsSelector.indexOfSelectedItem] + "= " +
+//                  self.matchTextField.stringValue.trimmingCharacters(in: CharacterSet.whitespacesAndNewlines)
+//          NSLog(s)
+//          NSLog(r)
+//          self.outputTextField.stringValue = self.outputTextField.stringValue + r
+//          if r == s
+//          {
+//            self.outputTextField.stringValue = self.outputTextField.stringValue + "\n" + "Match"
+//          }
+//          else
+//          {
+//            if !self.matchTextField.stringValue.isEmpty
+//            {
+//              self.outputTextField.stringValue = self.outputTextField.stringValue + "\n" + "NOT Match"
+//            }
+//          }
+//        }
+//      }
+//    }
+//    catch
+//    {
+//      self.outputTextField.stringValue = "Error spawning openssl process.."
+//    }
     
   }
 }
